@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <rect width="1024" height="1024" fill="#15171c"/>
+  <text x="512" y="548" text-anchor="middle"
+        font-family="'Liberation Mono','DejaVu Sans Mono',ui-monospace,monospace"
+        font-weight="700" font-size="540">
+    <tspan fill="#e8a13c">(</tspan><tspan fill="#efe9dd">m</tspan><tspan fill="#e8a13c">)</tspan>
+  </text>
+</svg>
