@@ -20,9 +20,9 @@ def stamp(d,pts,r,c):
 NS=260
 lparen=quad(P(215,235),P(165,327),P(215,460),NS)
 rparen=quad(P(425,235),P(475,327),P(425,460),NS)
-stem =line(P(258,295),P(258,400),NS)
-hump1=quad(P(258,295),P(290,255),P(322,295),NS)+line(P(322,295),P(322,400),NS)
-hump2=quad(P(322,295),P(354,255),P(386,295),NS)+line(P(386,295),P(386,400),NS)
+stem =line(P(258,298),P(258,390),NS)
+hump1=quad(P(258,298),P(290,260),P(322,298),NS)+line(P(322,298),P(322,390),NS)
+hump2=quad(P(322,298),P(354,260),P(386,298),NS)+line(P(386,298),P(386,390),NS)
 mpaths=(stem,hump1,hump2); ppaths=(lparen,rparen)
 def master():
     img=Image.new("RGB",(S,S),BG); d=ImageDraw.Draw(img)
