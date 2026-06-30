@@ -33,6 +33,14 @@ dependency-free secp256k1 / ECDSA / BIP340 Schnorr. The cryptography, in the ope
 **[pagetree](https://github.com/modus-lisp/pagetree)** — a pure-Lisp
 copy-on-write B+tree store. Storage you can read end to end.
 
+**[scribe](https://github.com/modus-lisp/scribe)** — first-class text rendering
+from scratch: sfnt/WOFF2 parsing, CFF & variable fonts, OpenType shaping, and an
+analytic gamma-correct rasterizer — verified against FreeType, HarfBuzz, and the
+fontTools instancer. The letterforms, in the open.
+
+**[brotli-pure](https://github.com/modus-lisp/brotli-pure)** — a from-scratch
+Brotli codec (RFC 7932). Compression you can read end to end.
+
 ---
 
 Common Lisp by design — image-based, interactive, inspectable, homoiconic:
