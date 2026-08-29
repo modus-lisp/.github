@@ -18,6 +18,10 @@ explains itself. Each piece is clean-room and **no-FFI** — no C, no OpenSSL, n
 libgit2, no V8 underneath. And each composes on the ones below it, so the whole
 tower stays legible from the metal up.
 
+**[modus-lisp.github.io](https://modus-lisp.github.io/)** — *crier*, the project's own
+dispatch: what the stack is, a map of all 42 repositories, and **This Week in Modus**, a
+weekly account of what moved and why it was hard.
+
 ## The substrate
 
 **[modus](https://github.com/modus-lisp/modus)** — bare-metal Common Lisp for
@@ -101,6 +105,7 @@ architected for self-improvement.
 ---
 
 Common Lisp by design — image-based, interactive, inspectable, homoiconic:
-legible by construction.
+legible by construction. Read along at
+**[modus-lisp.github.io](https://modus-lisp.github.io/)**.
 
 *Research / educational. Not audited — see each repository.*
