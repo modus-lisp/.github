@@ -14,11 +14,19 @@ being written because each one looked too small to look for.
 
 ## 1. Search, then delegate
 
+**`.github/CATALOG.md`** lists every repo: what its systems say they are, what they
+depend on, and every symbol each package exports. It opens with an index of names
+exported by more than one repo. Grep it first, then grep the source:
+
 ```sh
 # from the workspace root
+grep -n "base64" .github/CATALOG.md
 grep -rn "(defun sha256\b" --include=*.lisp */src
-grep -rln "crc32\|adler" --include=*.lisp */src
 ```
+
+The catalog is generated, so don't edit it by hand. After adding or renaming exports, run
+`sbcl --script .github/catalog/build.lisp` (about 2 s; nothing is loaded) and commit
+the result to `.github`.
 
 - **If the canonical home below has it, depend on that system and call it.** Don't
   copy its code into your repo. A copy misses every later fix, and that is how there
