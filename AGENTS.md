@@ -58,28 +58,31 @@ Everything here runs on SBCL and on Modus, which has its own compiler and runtim
 
 | algorithm | implementation | SBCL | Modus |
 |---|---|---|---|
-| CRC-32 | slicing-by-8 (beacon) | 1272 | 33 |
-| CRC-32 | one typed table lookup per byte (cram) | 338 | 244 |
+| CRC-32 | slicing-by-8, beacon's copy | 1272 | 33 |
+| CRC-32 | one typed table lookup per byte (cram before) | 338 | 244 |
+| CRC-32 | **slicing-by-8 (cram now)** | 1311 | 384 |
 | CRC-32 | bit at a time (scribe) | 7 | 0.9 |
 | Adler-32 | modulo per byte (old cram) | 29 | 29 |
-| Adler-32 | deferred modulo, NMAX 5552 (cram) | 1498 | 384 |
+| Adler-32 | **deferred modulo, NMAX 5552 (cram)** | 1498 | 447 |
 | inflate | bit-at-a-time Huffman (old cram) | 8.5 | 4.1 |
-| inflate | 10-bit lookup table (cram) | 11.3 | 5.1 |
-| SHA-1 | natrium | 20 | 6.8 |
+| inflate | **10-bit lookup table (cram)** | 12.0 | 5.2 |
+| SHA-1 | natrium, before | 20 | 6.8 |
 | SHA-1 | seal | 100 | 9.7 |
 | SHA-1 | beacon | 67 | 26 |
-| SHA-256 | natrium | 35 | 9.4 |
+| SHA-1 | **natrium, now** (seal's) | 109 | 9.6 |
+| SHA-256 | natrium, before | 35 | 9.4 |
 | SHA-256 | beacon (`ldb (byte 32 0)` modular arithmetic) | 75 | 5.1 |
 | SHA-256 | folio | 11 | 10.8 |
 | SHA-256 | cl-sev-snp | 23 | 11.7 |
-| SHA-512 | natrium | 133 | 11.6 |
+| SHA-256 | **natrium, now** (beacon's compression function) | 77 | 18 |
+| SHA-512 | **natrium** | 133 | 11.6 |
 | SHA-512 | folio | 2.8 | 0.04 |
 | SHA-512 | cl-sev-snp | 5.4 | 0.04 |
 
-Every row above was checked against the others for the same output. Of the hashes,
-only natrium's SHA-512 wins on both Lisps. For SHA-1 and SHA-256 the SBCL winner
-loses on Modus, so the job is to make natrium's fast on both, not to swap in one
-of the others. Until then, call natrium.
+Every row above was checked against the others for the same output. **The rule when
+the two Lisps disagree: take the SBCL winner.** Modus is being made comparably fast,
+and its slow spots are bugs to fix in Modus, not reasons to ship a slower algorithm.
+natrium now carries the SBCL winner for each hash, so call natrium.
 
 The scripts that produced these are in `.github/bench/`. Run them from the
 workspace root, for example `SYSTEMS="natrium seal" sbcl --script .github/bench/hash.lisp`,
@@ -87,8 +90,9 @@ or with `modus --script` in place of `sbcl --script`.
 
 So:
 
-- **Benchmark a candidate on SBCL and on Modus before choosing it**, and record both
-  numbers in the commit message. A change that wins 4x on SBCL can lose 7x on Modus.
+- **Benchmark a candidate on SBCL and on Modus**, and record both numbers in the
+  commit message. Choose by SBCL. When the Modus number is much worse, note it:
+  that is a Modus performance bug, and a measured case to fix it with.
 - **Check results against an independent implementation**: SBCL's own, or another
   library (chipz for inflate, GNU tar for tar, a known test vector). Otherwise a fast
   implementation can be wrong without anyone noticing.
