@@ -77,15 +77,19 @@ Everything here runs on SBCL and on Modus, which has its own compiler and runtim
 | SHA-1 | natrium, before | 20 | 6.8 |
 | SHA-1 | seal | 100 | 9.7 |
 | SHA-1 | beacon | 67 | 26 |
-| SHA-1 | **natrium, now** (seal's) | 109 | 9.6 |
+| SHA-1 | **natrium, now** (seal's, unrolled, ROL on SBCL) | 181 | 11 |
 | SHA-256 | natrium, before | 35 | 9.4 |
 | SHA-256 | beacon (`ldb (byte 32 0)` modular arithmetic) | 75 | 5.1 |
 | SHA-256 | folio | 11 | 10.8 |
 | SHA-256 | cl-sev-snp | 23 | 11.7 |
-| SHA-256 | **natrium, now** (beacon's compression function) | 77 | 18 |
+| SHA-256 | **natrium, now** (beacon's compression function, ROL on SBCL) | 90 | 18.6 |
 | SHA-512 | **natrium** | 133 | 11.6 |
 | SHA-512 | folio | 2.8 | 0.04 |
 | SHA-512 | cl-sev-snp | 5.4 | 0.04 |
+
+ironclad, outside the org, is faster on SBCL: SHA-1 364, SHA-256 120, SHA-512 121.
+That speed comes from x86-64 assembly in SBCL VOPs, which is exactly the opaque layer
+this org avoids. Among Lisp implementations the bold rows are the fastest we have.
 
 Every row above was checked against the others for the same output. **The rule when
 the two Lisps disagree: take the SBCL winner.** Modus is being made comparably fast,
