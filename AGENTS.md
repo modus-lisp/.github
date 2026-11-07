@@ -42,11 +42,11 @@ the result to `.github`.
 
 | what | system | entry points |
 |---|---|---|
-| SHA-1, SHA-256, SHA-384, SHA-512, SHA3-256, RIPEMD-160 | `natrium` | `sha256`, `sha256-into`, `with-sha256` / `sha256-update` / `sha256-final-into` (streaming), likewise 384/512; `sha1` |
-| HMAC, HKDF, PBKDF2 | `natrium` | `hmac-sha256`, `hmac-into`, `hkdf`, `hkdf-expand-into` |
-| AES, ChaCha20-Poly1305, X25519, Ed25519, DRBG | `natrium` | constant-time variants; secrets live in non-moving memory (`natrium/gossamer`) |
+| SHA-1, SHA-256, SHA-384, SHA-512, SHA3-256, SHAKE256, RIPEMD-160, MD5 | `natrium` | `sha256`, `sha256-into`, `with-sha256` / `sha256-update` / `sha256-final-into` (secrets, fixed memory); `make-sha256-state` / `sha256-copy-state` (public data, midstates); `sha1`, `sha1-init` / `-update` / `-final` / `-copy-state`; `make-sha3-256-state`, `sha3-update`, `sha3-final`, `sha3-copy-state`, `shake256`; `md5` (legacy protocols only) |
+| HMAC, HKDF, PBKDF2 | `natrium` | `hmac-sha256`, `hmac-sha1`, `hmac-into` (kinds `:sha1` `:sha256` `:sha384` `:sha512`), `hkdf`, `hkdf-expand-into`, `pbkdf2-into` |
+| AES, ChaCha20-Poly1305, X25519, Ed25519, random bytes | `natrium` | `make-aes-key` (key in fixed memory: `gossamer:fixed-copy`), `aes-cbc-*`, `aes-ctr-xor-into`, `make-aes-ctr-stream` / `make-aes-cfb-stream` + `aes-stream-xor` (position carries across calls); `x25519`, `ed25519-verify`; `random-bytes` -- never `(random 256)` for anything secret |
 | secp256k1, BIP340 Schnorr | `secp256k1-fast` | |
-| CRC-32, Adler-32 | `cram` | `crc32`, `crc32-update` (streaming register), `adler32` |
+| CRC-32, CRC-32C, Adler-32 | `cram` | `crc32`, `crc32-update` (streaming register), `crc32c`, `adler32` |
 | DEFLATE / zlib / gzip, compress and decompress | `cram` | `zlib-compress`, `zlib-decompress`, `zlib-inflate-stream` (READ/SINK, never holds the stream), `make-zstream` |
 | tar | `cram` | `tar-extract`, `tar-do-entries` |
 | HTTP(S) client | `seal` (`seal/http`) | `request`, `open-body-reader` (pull), `request-into` (push to a sink) |
@@ -55,6 +55,11 @@ the result to `.github`.
 | git (clone, fetch, packs, objects) | `cairn` | `fetch-pack-into`, `stream-object` |
 | FAT32 | `fs-fat` | `fat32-open-output` / `-write-output` / `-close-output`, `fat32-read-into` |
 | hex, base64, UTF-8 | **moving to `natrium`** | until that lands, check `natrium/src/util.lisp` and say which copy you used |
+
+**Not ironclad, not chipz.** No repo in the org depends on either since November 2026:
+ironclad's speed on SBCL is x86-64 assembly, and both are dependencies from outside the
+org for things natrium and cram do. If you need a primitive they lack, add it to them,
+with published test vectors.
 
 When you are about to write something that isn't in this table, check `*/src` across
 the workspace for it first. If it turns out to exist in two places, add a row here.
