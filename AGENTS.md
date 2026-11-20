@@ -54,6 +54,7 @@ the result to `.github`.
 | JSON | `json-simple` | |
 | git (clone, fetch, packs, objects) | `cairn` | `fetch-pack-into`, `stream-object` |
 | FAT32 | `fs-fat` | `fat32-open-output` / `-write-output` / `-close-output`, `fat32-read-into` |
+| Apple disk formats: the partition map (and, to come, HFS, resource forks, MacBinary, AppleDouble, BinHex) | `fs-apple` | `apm-read`, `apm-write-ddm`, `apm-write-map`, `apm-boot-checksum` |
 | hex, base64, UTF-8 | **moving to `natrium`** | until that lands, check `natrium/src/util.lisp` and say which copy you used |
 
 **Not ironclad, not chipz.** No repo in the org depends on either since November 2026:
