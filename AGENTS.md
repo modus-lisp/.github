@@ -46,7 +46,8 @@ the result to `.github`.
 | HMAC, HKDF, PBKDF2 | `natrium` | `hmac-sha256`, `hmac-sha1`, `hmac-into` (kinds `:sha1` `:sha256` `:sha384` `:sha512`), `hkdf`, `hkdf-expand-into`, `pbkdf2-into` |
 | AES, ChaCha20-Poly1305, X25519, Ed25519, random bytes | `natrium` | `make-aes-key` (key in fixed memory: `gossamer:fixed-copy`), `aes-cbc-*`, `aes-ctr-xor-into`, `make-aes-ctr-stream` / `make-aes-cfb-stream` + `aes-stream-xor` (position carries across calls); `x25519`, `ed25519-verify`; `random-bytes` -- never `(random 256)` for anything secret |
 | secp256k1, BIP340 Schnorr | `secp256k1-fast` | |
-| CRC-32, CRC-32C, Adler-32 | `cram` | `crc32`, `crc32-update` (streaming register), `crc32c`, `adler32` |
+| CRC-32, CRC-32C, Adler-32, CRC-16 | `cram` | `crc32`, `crc32-update` (streaming register), `crc32c`, `adler32`; `crc16`, `crc16-update` (XMODEM by default, `:init` / `:poly` for the other variants) |
+| LZMA, Apple ADC | `cram` | `lzma-compress`, `lzma-decompress`; `adc-decompress` (NDIF image chunks) |
 | DEFLATE / zlib / gzip, compress and decompress | `cram` | `zlib-compress`, `zlib-decompress`, `zlib-inflate-stream` (READ/SINK, never holds the stream), `make-zstream` |
 | tar | `cram` | `tar-extract`, `tar-do-entries` |
 | HTTP(S) client | `seal` (`seal/http`) | `request`, `open-body-reader` (pull), `request-into` (push to a sink) |
@@ -54,7 +55,7 @@ the result to `.github`.
 | JSON | `json-simple` | |
 | git (clone, fetch, packs, objects) | `cairn` | `fetch-pack-into`, `stream-object` |
 | FAT32 | `fs-fat` | `fat32-open-output` / `-write-output` / `-close-output`, `fat32-read-into` |
-| Apple disk formats: the partition map (and, to come, HFS, resource forks, MacBinary, AppleDouble, BinHex) | `fs-apple` | `apm-read`, `apm-write-ddm`, `apm-write-map`, `apm-boot-checksum` |
+| Apple disk and file formats: the partition map, HFS, resource forks, MacBinary, AppleDouble, DiskCopy 4.2 and NDIF images, PackBits, Mac Roman (BinHex still to come) | `fs-apple` | `apm-read`, `apm-write-ddm`, `apm-write-map`, `apm-boot-checksum`; `hfs-read`, `hfs-write` (volumes as `hfs-folder` / `hfs-file` trees; `hfs-ref`, `hfs-set`, `hfs-paths`); `resource-fork-read` / `-write`; `macbinary-read` / `-write`; `appledouble-read` / `-write`; `diskcopy42-read`, `ndif-read`; `packbits`, `unpackbits`; `mac-roman-encode` / `-decode` |
 | hex, base64, UTF-8 | **moving to `natrium`** | until that lands, check `natrium/src/util.lisp` and say which copy you used |
 
 **Not ironclad, not chipz.** No repo in the org depends on either since November 2026:
