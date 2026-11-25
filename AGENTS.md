@@ -52,7 +52,10 @@ the result to `.github`.
 | tar | `cram` | `tar-extract`, `tar-do-entries` |
 | HTTP(S) client | `seal` (`seal/http`) | `request`, `open-body-reader` (pull), `request-into` (push to a sink) |
 | TLS | `seal` | |
+| HTTP server (HTTP/1.1, routes, static files, server-sent events) | `cl-transport` (`cl-transport/http-server`) | `start-server`, `add-route`, `add-static`, `stop-server`; `request-*`, `respond`, `respond-file`, `start-event-stream` / `send-event` |
+| TCP sockets | `cl-transport` (`cl-transport/sockets`) | `tcp-connect`, `tcp-listen`, `tcp-accept`, `tcp-socket-stream`, `tcp-shutdown` (wakes another thread's blocked read), `wait-readable` |
 | JSON | `json-simple` | |
+| regular expressions (Perl / cl-ppcre syntax, and JS RegExp) | `comb` | cl-ppcre's API: `scan`, `scan-to-strings`, `register-groups-bind`, `all-matches(-as-strings)`, `split`, `regex-replace(-all)`, `create-scanner`, `do-matches`; `regex-compile` / `regex-exec` for JS RegExp (shuttle) |
 | git (clone, fetch, packs, objects) | `cairn` | `fetch-pack-into`, `stream-object` |
 | FAT32 | `fs-fat` | `fat32-open-output` / `-write-output` / `-close-output`, `fat32-read-into` |
 | Apple disk and file formats: the partition map, HFS, resource forks, MacBinary, AppleDouble, DiskCopy 4.2 and NDIF images, PackBits, Mac Roman (BinHex still to come) | `fs-apple` | `apm-read`, `apm-write-ddm`, `apm-write-map`, `apm-boot-checksum`; `hfs-read`, `hfs-write` (volumes as `hfs-folder` / `hfs-file` trees; `hfs-ref`, `hfs-set`, `hfs-paths`); `resource-fork-read` / `-write`; `macbinary-read` / `-write`; `appledouble-read` / `-write`; `diskcopy42-read`, `ndif-read`; `packbits`, `unpackbits`; `mac-roman-encode` / `-decode` |
@@ -62,6 +65,12 @@ the result to `.github`.
 ironclad's speed on SBCL is x86-64 assembly, and both are dependencies from outside the
 org for things natrium and cram do. If you need a primitive they lack, add it to them,
 with published test vectors.
+
+**Nor cl-ppcre, usocket, hunchentoot or McCLIM** (since 2026-11-25): comb, cl-transport's
+sockets and cl-transport/http-server do the first three, and glass's own window manager
+replaced the McCLIM desktop.  The outside libraries still appear only as test oracles
+(cl-ppcre in comb/test, chipz in cram/test) and inside third-party libraries a repo uses
+(skep's websocket-driver-client loads usocket).
 
 When you are about to write something that isn't in this table, check `*/src` across
 the workspace for it first. If it turns out to exist in two places, add a row here.
