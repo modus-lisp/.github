@@ -55,6 +55,7 @@ the result to `.github`.
 | HTTP server (HTTP/1.1, routes, static files, server-sent events) | `cl-transport` (`cl-transport/http-server`) | `start-server`, `add-route`, `add-static`, `stop-server`; `request-*`, `respond`, `respond-file`, `start-event-stream` / `send-event` |
 | TCP sockets | `cl-transport` (`cl-transport/sockets`) | `tcp-connect`, `tcp-listen`, `tcp-accept`, `tcp-socket-stream`, `tcp-shutdown` (wakes another thread's blocked read), `wait-readable` |
 | JSON | `json-simple` | |
+| threads, actors, message channels between threads (copying, plain data; one design on SBCL and modus) | `bobbin` | `spawn` / `spawn-link` / `spawn-monitor`, `send`, `receive` (`:timeout`), `receive-if`, `self`, `link`, `monitor` (`(:exit actor reason)`); `make-channel`, `channel-send`, `channel-receive`, `channel-try-receive`, `channel-drain` (was cl-transport/chan). modus's actor runtime where it exists, else a thread per actor; never a shared queue of your own |
 | regular expressions (Perl / cl-ppcre syntax, and JS RegExp) | `comb` | cl-ppcre's API: `scan`, `scan-to-strings`, `register-groups-bind`, `all-matches(-as-strings)`, `split`, `regex-replace(-all)`, `create-scanner`, `do-matches`; `regex-compile` / `regex-exec` for JS RegExp (shuttle) |
 | git (clone, fetch, packs, objects) | `cairn` | `fetch-pack-into`, `stream-object` |
 | FAT32 | `fs-fat` | `fat32-open-output` / `-write-output` / `-close-output`, `fat32-read-into` |
