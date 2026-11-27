@@ -22,12 +22,14 @@ deliberate: protocol names, or a repo re-exporting a dependency.)
 - `*op-table*`: chord, mill
 - `*progress*`: loom, seal, weft
 - `*protocol-version*`: cl-consensus, operandi
+- `*reconnect-delay*`: cl-nostr, glass
 - `*relays*`: operandi, skep
 - `*secp256k1-gx*`: cl-consensus, secp256k1-fast
 - `*secp256k1-gy*`: cl-consensus, secp256k1-fast
 - `*secp256k1-n*`: cl-consensus, secp256k1-fast
 - `*secp256k1-p*`: cl-consensus, secp256k1-fast
 - `*system-prompt*`: operandi, operandi-gui, skep
+- `*task*`: bobbin, cl-deposits
 - `*tool-names*`: operandi, operandi-gui, skep
 - `*user-agent*`: seal, weft
 - `*wait-hook*`: cl-smb, conch
@@ -41,6 +43,7 @@ deliberate: protocol names, or a repo re-exporting a dependency.)
 - `accept-peer`: cl-consensus, cl-payments
 - `accept-stream`: cl-tor, cl-transport
 - `add-member`: cl-deposits, skep
+- `after-seconds`: bobbin, cl-deposits
 - `agent-pubkey`: operandi, skep
 - `anchor-script`: cl-deposits, cl-payments
 - `ascii->bytes`: cl-consensus, cl-deposits, cl-payments, cl-tor, cl-transport, natrium, secp256k1-fast
@@ -59,6 +62,7 @@ deliberate: protocol names, or a repo re-exporting a dependency.)
 - `bytes-to-int`: cl-consensus, secp256k1-fast
 - `bytes=`: cl-tor, natrium
 - `call-list`: modus, modus-lisp.github.io
+- `cancel-timer`: bobbin, cl-deposits
 - `canvas`: scribe, weft
 - `canvas-height`: scribe, weft
 - `canvas-pixels`: scribe, weft
@@ -122,7 +126,7 @@ deliberate: protocol names, or a repo re-exporting a dependency.)
 - `event-kind`: beacon, cl-nostr
 - `event-pubkey`: beacon, cl-nostr
 - `event-tags`: beacon, cl-nostr
-- `every-seconds`: cl-deposits, cl-transport
+- `every-seconds`: bobbin, cl-deposits, cl-transport
 - `exec`: conch, operandi
 - `expose`: cl-frpc, cl-payments, cl-transport
 - `fbuf-slot`: modus, modus-lisp.github.io
@@ -191,6 +195,18 @@ deliberate: protocol names, or a repo re-exporting a dependency.)
 - `keypair-wipe`: cl-nostr, secp256k1-fast
 - `label`: loom, trellis
 - `label-p`: modus, trellis
+- `lane`: bobbin, cl-deposits
+- `lane-busy-p`: bobbin, cl-deposits
+- `lane-close`: bobbin, cl-deposits
+- `lane-depth`: bobbin, cl-deposits
+- `lane-idle-p`: bobbin, cl-deposits
+- `lane-items`: bobbin, cl-deposits
+- `lane-live-p`: bobbin, cl-deposits
+- `lane-name`: bobbin, cl-deposits
+- `lane-p`: bobbin, cl-deposits
+- `lane-push`: bobbin, cl-deposits
+- `lane-push-front`: bobbin, cl-deposits
+- `lane-runs`: bobbin, cl-deposits
 - `le->int`: cl-deposits, cl-tor
 - `library`: spool, warp
 - `library-root`: spool, warp
@@ -207,6 +223,7 @@ deliberate: protocol names, or a repo re-exporting a dependency.)
 - `make-context`: gesso, illatio, weft
 - `make-decoder`: cassette, reed, reel
 - `make-ice`: cl-transport, webrtc-data
+- `make-lane`: bobbin, cl-deposits
 - `make-listener`: glass, stave
 - `make-node`: cl-deposits, cl-payments
 - `make-object`: modus, shuttle
@@ -267,8 +284,14 @@ deliberate: protocol names, or a repo re-exporting a dependency.)
 - `open-channel`: cl-payments, warp
 - `open-store`: beacon, operandi, pagetree
 - `ortho`: modus, modus-lisp.github.io
-- `owner-call`: cl-consensus, cl-deposits
-- `owner-call-error`: cl-consensus, cl-deposits
+- `owner-busy`: bobbin, cl-deposits
+- `owner-call`: bobbin, cl-consensus, cl-deposits
+- `owner-call-error`: bobbin, cl-consensus, cl-deposits
+- `owner-call-error-message`: bobbin, cl-deposits
+- `owner-lock`: bobbin, cl-deposits
+- `owner-lock-held-p`: bobbin, cl-deposits
+- `owner-p`: bobbin, cl-deposits
+- `owner-post`: bobbin, cl-deposits
 - `pack-at`: modus, modus-lisp.github.io
 - `page`: folio, loom
 - `page-p`: folio, loom
@@ -280,7 +303,7 @@ deliberate: protocol names, or a repo re-exporting a dependency.)
 - `parse-pubkey`: cl-consensus, cl-deposits, cl-payments
 - `parse-setup`: reed, reel
 - `pause`: spool, warp
-- `pause-for`: cl-consensus, cl-deposits
+- `pause-for`: bobbin, cl-consensus, cl-deposits
 - `pcma-decode`: reed, webrtc-media
 - `pcma-encode`: reed, webrtc-media
 - `pcmu-decode`: reed, webrtc-media
@@ -324,7 +347,9 @@ deliberate: protocol names, or a repo re-exporting a dependency.)
 - `pubkey-xonly`: cl-consensus, secp256k1-fast
 - `publish`: cl-nostr, skep
 - `pull`: cairn, warp
-- `pump`: cl-consensus, cl-deposits, cl-nostr
+- `pump`: bobbin, cl-consensus, cl-deposits, cl-nostr
+- `pump-depth`: bobbin, cl-deposits
+- `pump-until`: bobbin, cl-consensus
 - `push-matrix`: modus, modus-lisp.github.io
 - `pv!`: modus, modus-lisp.github.io
 - `pv-line`: modus, modus-lisp.github.io
@@ -372,6 +397,7 @@ deliberate: protocol names, or a repo re-exporting a dependency.)
 - `run-loop`: operandi, skep
 - `run-model`: chord, mill
 - `run-read-loop`: cl-consensus, cl-payments
+- `run-work`: bobbin, cl-deposits
 - `running-p`: cl-marmot, cl-transport, operandi, skep
 - `sample`: illatio, warp
 - `say`: chord, cl-frpc, operandi-gui
@@ -441,6 +467,7 @@ deliberate: protocol names, or a repo re-exporting a dependency.)
 - `string->utf8`: cabinet, cl-nostr
 - `subscribe`: cl-nostr, spool
 - `tagged-hash`: cl-consensus, cl-deposits, secp256k1-fast
+- `task-name`: bobbin, cl-deposits
 - `tcp-accept`: cl-fips, cl-transport
 - `tcp-close`: cl-fips, cl-transport
 - `tcp-connect`: cl-fips, cl-transport
@@ -466,6 +493,9 @@ deliberate: protocol names, or a repo re-exporting a dependency.)
 - `tensor-size`: chord, mill
 - `text-width`: gesso, glass
 - `tick`: operandi, warp
+- `timer`: bobbin, cl-deposits
+- `timer-live-p`: bobbin, cl-deposits
+- `timer-runs`: bobbin, cl-deposits
 - `tip`: cl-consensus, cl-deposits
 - `to-octets`: brotli-pure, zstd-pure
 - `toggle`: spool, warp
@@ -513,10 +543,14 @@ deliberate: protocol names, or a repo re-exporting a dependency.)
 - `w-u64`: cl-consensus, cl-payments
 - `w-u8`: cl-consensus, cl-payments
 - `wait-readable`: cl-transport, seal
-- `wait-until`: cl-consensus, cl-deposits
+- `wait-until`: bobbin, cl-consensus, cl-deposits
 - `wallet`: cl-consensus, cl-deposits
 - `wallet-balance`: cl-consensus, cl-deposits
 - `with-connection`: conch, seal
+- `with-owner-lock`: bobbin, cl-deposits
+- `work-error`: bobbin, cl-deposits
+- `work-local`: bobbin, cl-deposits
+- `work-quiet-p`: bobbin, cl-deposits
 - `write-png`: gesso, pigment, scribe, weft
 - `write-wav`: chord, reed
 - `writer-bytes`: cl-consensus, cl-payments
@@ -540,6 +574,7 @@ deliberate: protocol names, or a repo re-exporting a dependency.)
 
 - system `bobbin` -- Actors and copying message channels: modus's actor runtime and channels where they exist, native threads and a locked queue of copies elsewhere.
 - package `bobbin` (bobbin/src/package.lisp): `*report-errors*` `actor-alive-p` `backend` `channel` `channel-drain` `channel-p` `channel-receive` `channel-send` `channel-try-receive` `demonitor` `link` `mailbox-full` `make-channel` `max-actors` `monitor` `not-an-actor` `receive` `receive-if` `self` `send` `spawn` `spawn-link` `spawn-monitor` `stop` `unlink`
+- package `bobbin.owner` (bobbin/src/package.lisp): `*owner-call-slots*` `*owner-message-bytes*` `*task*` `*work-threads*` `add-owner-source` `after-seconds` `cancel-timer` `every-seconds` `lane` `lane-busy-p` `lane-close` `lane-depth` `lane-idle-p` `lane-items` `lane-live-p` `lane-name` `lane-p` `lane-push` `lane-push-front` `lane-runs` `make-lane` `owner-busy` `owner-busy-key` `owner-call` `owner-call-error` `owner-call-error-message` `owner-lock` `owner-lock-held-p` `owner-p` `owner-post` `owner-thread` `owner-wake` `pause-for` `pump` `pump-depth` `pump-until` `remove-owner-source` `run-work` `start-owner` `task-name` `timer` `timer-live-p` `timer-name` `timer-p` `timer-runs` `wait-until` `with-owner-lock` `work-error` `work-error-message` `work-local` `work-quiet-p`
 
 ## brotli-pure
 
@@ -595,10 +630,10 @@ deliberate: protocol names, or a repo re-exporting a dependency.)
 - package `cl-consensus.fees` (cl-consensus/src/fees.lisp): `*block-vbytes*` `*max-conf-target*` `*min-relay-feerate*` `estimate-feerate`
 - package `cl-consensus.mempool` (cl-consensus/src/mempool.lisp): `*max-mempool-bytes*` `*max-rbf-replacements*` `*max-standard-tx-weight*` `*mempool-expiry-seconds*` `*min-relay-feerate*` `accept-tx` `dust-threshold` `entry` `entry-children` `entry-fee` `entry-feerate` `entry-parents` `entry-replaceable` `entry-time` `entry-tx` `entry-vsize` `expire-mempool` `final-tx-p` `gather-descendants` `load-mempool` `make-mempool` `mempool` `mempool-bytes` `mempool-conflicts-p` `mempool-floor-feerate` `mempool-get` `mempool-on-block` `mempool-remove` `mempool-size` `mempool-txids` `rejected` `rejected-reason` `save-mempool` `trim-mempool`
 - package `cl-consensus.netloop` (cl-consensus/src/netloop.lisp): `*conn-deadline*` `add-owner-task` `conn-available` `conn-kick` `conn-peek` `conn-peek-u32` `conn-read` `conn-timeout` `conn-write` `net-close` `net-connect` `net-connect-start` `net-listen` `net-running-p` `net-unlisten` `netconn` `netconn-eof` `netconn-error` `netconn-host` `netconn-id` `netconn-on-data` `netconn-p` `netconn-port` `netconn-state` `owner-call` `owner-call-error` `owner-thread-p` `pause-for` `pump` `pump-until` `remove-owner-task` `start-net` `stop-net` `wait-until`
-- package `cl-consensus.node` (cl-consensus/src/node.lisp): `*control-port*` `*mempool*` `*onion-service-hook*` `*peer-manager*` `*rpc-host*` `*rpc-port*` `*utxo*` `extra-peers` `live-peers` `reload!` `rpc-call` `serve-node` `start` `start-peer-manager` `start-rpc-server` `stop` `stop-peer-manager`
+- package `cl-consensus.node` (cl-consensus/src/node.lisp): `*control-port*` `*mempool*` `*onion-dial-timeout*` `*onion-service-hook*` `*onion-target*` `*peer-manager*` `*rpc-host*` `*rpc-port*` `*tor-dir-path*` `*utxo*` `extra-peers` `live-peers` `reload!` `rpc-call` `serve-node` `start` `start-peer-manager` `start-rpc-server` `stop` `stop-peer-manager`
 - package `cl-consensus.onion-service` (cl-consensus/src/onion-service.lisp): `*onion-address*` `*onion-service-thread*` `start-onion-service`
 - package `cl-consensus.onion` (cl-consensus/src/onion.lisp): `*tor-directory*` `load-tor-directory` `onion->pubkey` `onion-valid-p` `parse-addrv2-onions` `pubkey->onion` `save-tor-directory` `tordir-add` `tordir-count` `tordir-list`
-- package `cl-consensus.peer` (cl-consensus/src/peer.lisp): `%onion-host-p` `*advertised-services*` `*default-user-agent*` `*peer-transport*` `*protocol-version*` `accept-netconn` `accept-peer` `accept-peer-stream` `announce-address` `await-semaphore` `build-addrv2-message` `connect-peer` `disconnect` `enable-discovery` `handshake-status` `on` `onion-addrv2-entry` `parse-addr-payload` `parse-addrv2-payload` `pause-for` `peer` `peer-addr` `peer-alive-p` `peer-closer` `peer-connected-at` `peer-handshake-error` `peer-height` `peer-host` `peer-log` `peer-port` `peer-prefers-headers` `peer-services` `peer-subver` `peer-version` `peer-wants-addrv2` `run-read-loop` `send` `send-getaddr` `start-outbound-handshake` `start-read-loop` `tor-available-p` `wait-until`
+- package `cl-consensus.peer` (cl-consensus/src/peer.lisp): `%onion-host-p` `*advertised-services*` `*default-user-agent*` `*peer-transport*` `*protocol-version*` `*tor-isolate*` `*tor-proxy*` `*tor-proxy-hook*` `accept-netconn` `accept-peer` `accept-peer-stream` `announce-address` `await-semaphore` `build-addrv2-message` `connect-peer` `disconnect` `enable-discovery` `handshake-status` `on` `onion-addrv2-entry` `parse-addr-payload` `parse-addrv2-payload` `pause-for` `peer` `peer-addr` `peer-alive-p` `peer-closer` `peer-connected-at` `peer-handshake-error` `peer-height` `peer-host` `peer-log` `peer-port` `peer-prefers-headers` `peer-proxy` `peer-services` `peer-subver` `peer-version` `peer-wants-addrv2` `run-read-loop` `send` `send-getaddr` `start-outbound-handshake` `start-read-loop` `tor-available-p` `wait-until`
 - package `cl-consensus.reorg` (cl-consensus/src/reorg.lisp): `activate-best-chain` `close-pt-undo-store` `deep-reorg-halt` `deserialize-undo` `make-mem-undo-store` `mem-undo-store` `open-pt-undo-store` `pt-undo-store` `reorg-depth` `reorg-error` `serialize-undo` `undo-commit` `undo-del` `undo-get` `undo-prune` `undo-put`
 - package `cl-consensus.rpc-wallet` (cl-consensus/src/rpc-wallet.lisp): `*wallet*` `register-wallet-methods`
 - package `cl-consensus.script` (cl-consensus/src/script.lisp): `+sighash-all+` `+sighash-anyonecanpay+` `+sighash-none+` `+sighash-single+` `bip143-sighash` `disassemble-script` `eval-script` `legacy-sighash` `parse-der-sig` `parse-pubkey` `parse-script` `script-error` `tapleaf-hash` `taproot-sighash` `verify-input` `verify-taproot` `with-sighash-buffer`
@@ -607,6 +642,7 @@ deliberate: protocol names, or a repo re-exporting a dependency.)
 - package `cl-consensus.signet` (cl-consensus/src/signet.lisp): `+signet-header+` `check-signet-block-solution` `make-signet-txs` `signet-block-signature-p` `signet-txs` `signet-txs-to-sign` `signet-txs-to-spend`
 - package `cl-consensus.slip39` (cl-consensus/src/slip39-wordlist.lisp): `*wordlist*` `combine-mnemonics` `generate-mnemonics` `mnemonic-words` `recover-secret` `slip39-error` `split-secret` `wallet-backup` `wallet-from-mnemonics`
 - package `cl-consensus.taproot-script` (cl-consensus/src/taproot-script.lisp): `build-script-path-spend` `build-taptree` `checksig-leaf-script` `control-block` `tapbranch-hash` `tapleaf-hash` `taproot-output-spk` `taptree-leaf-path` `taptree-root`
+- package `cl-consensus.tor-proxy` (cl-consensus/src/tor-proxy.lisp): `start-tor-proxy` `stop-tor-proxy` `tor-proxy-port`
 - package `cl-consensus.tx` (cl-consensus/src/tx.lisp): `compute-bip143-midstate` `finalize-tx` `make-tx` `make-txin` `make-txout` `parse-tx` `serialize-tx` `tx` `tx-base-size` `tx-bip143-ho` `tx-bip143-hp` `tx-bip143-hs` `tx-coinbase-p` `tx-inputs` `tx-locktime` `tx-outputs` `tx-segwit-p` `tx-total-size` `tx-txid` `tx-version` `tx-vsize` `tx-weight` `tx-witnesses` `tx-wtxid` `txid-hex` `txin` `txin-prev-hash` `txin-prev-index` `txin-script` `txin-sequence` `txout` `txout-script` `txout-value` `wtxid-hex`
 - package `cl-consensus.utxo-disk` (cl-consensus/src/utxo-disk.lisp): `close-udb` `open-udb` `udb-capacity` `udb-count` `udb-del` `udb-get` `udb-map-slots` `udb-ovf-end` `udb-put` `udb-sync`
 - package `cl-consensus.utxo-pagetree` (cl-consensus/src/utxo-pagetree.lisp): `*pt-rebuild-ratio*` `decode-coin` `encode-coin` `encode-key` `make-ptu` `open-pagetree-utxo` `ptu` `ptu-close` `ptu-count` `ptu-del` `ptu-flush` `ptu-get` `ptu-height` `ptu-incremental-flush` `ptu-map-coins` `ptu-path` `ptu-put` `ptu-rebuild-flush` `ptu-store` `ptu-total`
@@ -678,14 +714,14 @@ deliberate: protocol names, or a repo re-exporting a dependency.)
 ## cl-nostr
 
 - system `cl-nostr` -- A from-scratch Nostr client in Common Lisp — NIP-01 events (BIP340-signed), NIP-19 bech32 entities, and a WebSocket relay pool for publishing and subscribing.  
-  depends on: `secp256k1-fast`, `seal/http`, `natrium`, `cl-base64`, `json-simple`, `seal/websocket`, `bordeaux-threads`, `cl-transport/sockets`
+  depends on: `secp256k1-fast`, `seal/http`, `natrium`, `cl-base64`, `json-simple`, `seal/websocket`, `bordeaux-threads`, `bobbin`, `cl-transport/sockets`
 - package `cl-nostr.util` (cl-nostr/src/packages.lisp): `->bytes32` `bytes->hex` `call-in-parallel` `call-with-deadline` `hex->bytes` `octets` `random-bytes` `sha256` `string->utf8` `utf8->string` `wait-step` `with-deadline`
 - package `cl-nostr.keys` (cl-nostr/src/packages.lisp): `*curve-lock*` `generate-keypair` `keypair` `keypair-from-secret` `keypair-p` `keypair-public-key` `keypair-secret-key` `keypair-wipe` `make-keypair` `public-hex` `public-key-of-secret` `secret-hex` `secret-key-of` `sign` `verify`
 - package `cl-nostr.bech32` (cl-nostr/src/packages.lisp): `decode` `decode-entity` `encode` `naddr-decode` `naddr-encode` `nevent-decode` `nevent-encode` `note-decode` `note-encode` `nprofile-decode` `nprofile-encode` `npub-decode` `npub-encode` `nsec-decode` `nsec-encode` `pubkey-hex`
 - package `cl-nostr.event` (cl-nostr/src/packages.lisp): `+kind-contacts+` `+kind-deletion+` `+kind-dm+` `+kind-metadata+` `+kind-reaction+` `+kind-text-note+` `build-event` `compute-id` `e-tags` `event` `event->json` `event->plist` `event-content` `event-created-at` `event-id` `event-kind` `event-pubkey` `event-sig` `event-tags` `first-tag-value` `json->event` `make-event` `p-tags` `serialize-for-id` `sign-event` `tag-values` `valid-event-p` `verify-event`
 - package `cl-nostr.filter` (cl-nostr/src/packages.lisp): `filter` `filter->json` `filter-matches-p` `make-filter`
-- package `cl-nostr.relay` (cl-nostr/src/packages.lisp): `*pump-hooks*` `close-relay` `connect-relay` `on-eose` `on-event` `on-notice` `on-ok` `publish` `pump` `relay` `relay-connected-p` `relay-ping` `relay-url` `subscribe` `subscription` `subscription-id` `unsubscribe`
-- package `cl-nostr.pool` (cl-nostr/src/packages.lisp): `ack-accepted-p` `ack-event-id` `ack-message` `ack-replied-p` `ack-status` `ack-url` `acks-accepted` `add-relay` `close-pool` `fetch-events` `fetch-one` `make-pool` `pool` `pool-p` `pool-publish` `pool-publish-sync` `pool-relay-urls` `pool-relays` `pool-subscribe` `pool-unreachable` `relay-ack` `remove-relay`
+- package `cl-nostr.relay` (cl-nostr/src/packages.lisp): `*pump-hooks*` `*reconnect-delay*` `close-relay` `connect-relay` `on-eose` `on-event` `on-notice` `on-ok` `publish` `pump` `pump-relays` `relay` `relay-connected-p` `relay-ping` `relay-status` `relay-url` `subscribe` `subscription` `subscription-id` `unsubscribe` `with-relay-owner`
+- package `cl-nostr.pool` (cl-nostr/src/packages.lisp): `ack-accepted-p` `ack-event-id` `ack-message` `ack-replied-p` `ack-status` `ack-url` `acks-accepted` `add-relay` `close-pool` `fetch-events` `fetch-one` `make-pool` `pool` `pool-p` `pool-publish` `pool-publish-sync` `pool-pump` `pool-relay-urls` `pool-relays` `pool-subscribe` `pool-unreachable` `pool-unsubscribe` `relay-ack` `remove-relay`
 - package `cl-nostr.nip44` (cl-nostr/src/packages.lisp): `calc-padded-len` `conversation-key` `nip44-decrypt` `nip44-decrypt-ck` `nip44-decrypt-octets` `nip44-encrypt` `nip44-encrypt-ck` `nip44-encrypt-octets-with-nonce` `nip44-encrypt-with-nonce`
 - package `cl-nostr.udp` (cl-nostr/src/packages.lisp): `+max-datagram+` `datagram-size` `datagram-too-large` `encrypt-datagram` `encrypted-datagram` `event->datagram` `open-datagram` `publish-datagram` `publish-datagram-encrypted`
 - package `cl-nostr.nip59` (cl-nostr/src/packages.lisp): `build-giftwrap` `unwrap-giftwrap` `unwrap-rumor` `wrap-rumor`
@@ -830,7 +866,7 @@ deliberate: protocol names, or a repo re-exporting a dependency.)
 ## glass
 
 - package `glass.desk` (glass/src/desk.lisp): `*desk-copy*` `*font-size*` `*menu-item-h*` `*menu-w*` `*title-h*` `desk-apps` `desk-fb` `desk-key` `desk-keyboard-fn` `desk-open` `desk-pointer` `desk-redraw` `desk-register-action` `desk-register-app` `desk-tick` `desk-windows` `make-desk`
-- package `glass` (glass/src/packages.lisp): `*admission-host*` `*admission-port*` `*admission-port-offset*` `*admission-timeout*` `*audio-port-offset*` `*audio-stream-port*` `*audit-retention*` `*box-secret*` `*default-fb-format*` `*desktop-name*` `*dictating*` `*dictation-last*` `*dictation-muted*` `*dictation-tail-seconds*` `*dictation-typed*` `*enrolment-file*` `*enrolment-ttl*` `*enrolments*` `*hearing-gap-seconds*` `*hearing-max-seconds*` `*hearing-models*` `*hearing-prefer-mic*` `*hearing-preroll-seconds*` `*hearing-rate*` `*hearing-threshold*` `*key-injector*` `*last-site-publication*` `*latin1-substitute*` `*legacy-vnc-auth*` `*login-code-file*` `*login-codes*` `*login-ttl*` `*login-url-base*` `*max-cut-text*` `*mic-gap-frames*` `*mic-live-seconds*` `*mic-port-offset*` `*mic-provider*` `*mic-rate*` `*mic-stream-port*` `*mixer-frame-ms*` `*mixer-rate*` `*nostr-allow*` `*nostr-command-max-age*` `*nostr-relays*` `*paste-chord*` `*paste-key-delay*` `*paste-max-chars*` `*perf-on*` `*renewal-ttl*` `*seat-key-file*` `*seat-keys*` `*send-lag*` `*send-queue*` `*session-admission-service*` `*session-audio-stream*` `*session-clipboard*` `*session-dictation*` `*session-ears*` `*session-mic*` `*session-mic-stream*` `*session-mixer*` `*session-nostr-bot*` `*session-speaker*` `*site-blossom*` `*site-gateway*` `*site-key-file*` `*site-lookup-relays*` `*site-npub*` `*site-relays*` `*site-title*` `*site-url-file*` `*speech-gain*` `*speech-gap-ms*` `*speech-speed*` `*speech-voice*` `*turn-ice*` `*vnc-password*` `*wordlist*` `+black+` `+blue+` `+green+` `+pixel-colour-space+` `+red+` `+vnc-credential-alphabet+` `+white+` `admission-admit` `admission-allowed-p` `admission-devices` `admission-mint` `admission-ping` `admission-records` `admission-request` `admission-revoke` `admission-serve` `admission-service` `admission-service-p` `admission-service-port` `admission-service-report` `admission-service-running` `admit-peer` `allowed-pubkey-p` `as-mix` `attach-mic` `audio-stream` `audio-stream-mix` `audio-stream-mixer` `audio-stream-p` `audio-stream-port` `audio-stream-report` `audio-stream-running` `audio-tap` `audio-tap-connected` `audio-tap-drops` `audio-tap-frames` `audio-tap-p` `audio-tap-rate` `audio-tap-reconnects` `audio-tap-underruns` `audio-tone` `audit-retained-p` `box-identity-p` `box-npub` `box-pubkey` `call-with-decoder-tables` `choose-speech-voice` `clipboard` `clipboard-clear` `clipboard-disown` `clipboard-listen` `clipboard-normalize-newlines` `clipboard-own` `clipboard-owner` `clipboard-owner-name` `clipboard-p` `clipboard-paste` `clipboard-report` `clipboard-serial` `clipboard-set` `clipboard-stamp` `clipboard-text` `clipboard-unlisten` `code-expiry` `code-live-p` `code-lock` `code-minted` `code-mtime` `code-nonce` `code-recipient` `code-redeemer` `code-settled` `code-source` `code-state` `code-table` `default-font` `describe-enrolment` `describe-enrolments` `describe-login-codes` `describe-revoke` `detach-mic` `device-enrolled-p` `device-enrolment` `dict-ear` `dict-injector` `dict-last` `dict-muted` `dict-name` `dict-on` `dict-typed` `dictating-p` `dictation` `dictation-report` `dictation-text` `ear-listening-to` `ear-mic-stream` `ear-mix` `ear-rec` `ears` `ears-p` `effective-vnc-password` `endpoint-viewers` `enrol-device` `enrolment` `enrolment-cause` `enrolment-count` `enrolment-created` `enrolment-expiry` `enrolment-issued` `enrolment-live-p` `enrolment-nonce` `enrolment-pubkey` `enrolment-seen` `enrolment-since` `enrolment-state` `enrolment-via` `ensure-mic` `fb-blit` `fb-blit-clipped` `fb-blit-scaled` `fb-blit-scaled-region` `fb-blit-yuv` `fb-chroma-height` `fb-chroma-width` `fb-clip` `fb-copy` `fb-damage` `fb-fill` `fb-format` `fb-frame` `fb-frameno` `fb-generation` `fb-get` `fb-height` `fb-hline` `fb-mark-frame` `fb-move-rect` `fb-pixels` `fb-put` `fb-rect` `fb-resize` `fb-take-copy` `fb-take-frame` `fb-text` `fb-touch` `fb-u` `fb-v` `fb-vline` `fb-width` `fb-y` `find-enrolments` `find-login-code` `forget-seat-identity` `framebuffer` `framebuffer-p` `headset` `headset-audio` `headset-audio-port` `headset-dictate` `headset-dictation` `headset-ears` `headset-injector` `headset-listen` `headset-mic` `headset-mic-port` `headset-mix` `headset-mixer` `headset-name` `headset-primary-p` `headset-report` `headset-stop-dictating` `headset-stop-listening` `hearing-clear` `hearing-heard` `hearing-level` `hearing-listen` `hearing-models` `hearing-partial` `hearing-ready-p` `hearing-report` `hearing-text` `hearing-unlisten` `hush` `latin1-bytes` `latin1-string` `list-enrolment-records` `list-enrolments` `list-login-codes` `list-seat-identities` `listening-p` `load-enrolments` `load-font` `load-site-url` `login-code` `login-code-count` `login-code-file` `login-code-store` `login-link-fragment` `login-link-url` `login-token-status` `make-audio-tap` `make-clipboard` `make-ears` `make-framebuffer` `make-headset` `make-mic` `make-mic-sender` `make-mix` `make-mixer` `make-rfb-endpoint` `make-speaker` `make-vnc-credential` `make-wake` `mic` `mic-drops` `mic-feed` `mic-frames` `mic-live-p` `mic-name` `mic-next-frame` `mic-p` `mic-push` `mic-rate` `mic-received` `mic-report` `mic-send` `mic-sender` `mic-sender-connected` `mic-sender-dropped` `mic-sender-offered` `mic-sender-p` `mic-sender-reconnects` `mic-sender-report` `mic-sender-sent` `mic-sender-stop` `mic-source` `mic-stream` `mic-stream-current` `mic-stream-p` `mic-stream-port` `mic-stream-report` `mic-underruns` `mint-login-token` `mix` `mix-bus` `mix-hears-p` `mix-level` `mix-mute` `mix-name` `mix-p` `mix-report` `mix-seq` `mix-sinks` `mix-source-gain` `mix-unmute` `mixer` `mixer-add-file` `mixer-add-source` `mixer-capacity` `mixer-default` `mixer-default-mix` `mixer-find-source` `mixer-frame-samples` `mixer-late` `mixer-level` `mixer-mixes` `mixer-p` `mixer-play` `mixer-rate` `mixer-remove-source` `mixer-report` `mixer-running` `mixer-seq` `mixer-sinks` `mixer-source` `mixer-source-p` `mixer-sources` `mixer-start` `mixer-stop` `mixer-subscribe` `mixer-tick` `mixer-unsubscribe` `normalize-pubkey` `nostr-bot` `nostr-bot-answered` `nostr-bot-denied` `nostr-bot-ignored` `nostr-bot-npub` `nostr-bot-p` `nostr-bot-pubkey` `nostr-bot-received` `nostr-bot-report` `nostr-command-reply` `note-site-publication` `parse-nostr-command` `paste-keysyms` `paste-text` `paste-text-as-keys` `perf-record-composite` `perf-record-send` `perf-report` `perf-reset` `publish-site` `publish-site-file` `read-client-cut-text` `read-file-octets` `record-mint` `redeem-nonce` `refresh-nostr-allow` `remove-mix` `revoke-enrolments` `rgb` `save-enrolments` `save-site-url` `seat-admission-port` `seat-audio-port` `seat-identity` `seat-identity-for` `seat-identity-known` `seat-identity-name` `seat-identity-npub` `seat-identity-pubkey` `seat-identity-secret` `seat-mic-port` `send-cut-text` `send-login-link` `serve` `serve-endpoints` `serve-multi` `serve-one` `serve-single` `session-clipboard` `session-mic` `session-mixer` `session-speaker` `set-login-url-base` `sink` `sink-drops` `sink-frames` `sink-gain` `sink-mix` `sink-mixer` `sink-next-frame` `sink-p` `sink-rate` `sink-source` `sink-underruns` `sink-unsubscribe` `site-identity-p` `site-link-path` `site-npub` `site-publication` `site-publication-at` `site-publication-hash` `site-publication-npub` `site-publication-path` `site-publication-problems` `site-publication-report` `site-publication-url` `site-publication-version` `site-report` `site-secret` `speak` `speaker` `speaker-p` `speaking-p` `speech-options` `speech-report` `speech-voice` `speech-voices` `src-audience` `src-frames` `src-gain` `src-id` `src-level` `src-name` `start-admission-service` `start-audio-stream` `start-dictation` `start-listening` `start-mic-stream` `start-nostr-bot` `start-session-audio` `start-session-mic` `start-session-nostr` `stop-admission-service` `stop-audio-stream` `stop-dictation` `stop-headset` `stop-listening` `stop-mic-stream` `stop-nostr-bot` `stop-speaker` `stream-mic` `sync-enrolments` `tap-next-frame` `tap-report` `tap-source` `tap-stop` `text-width` `unix-now` `verify-login-token` `vnc-auth-available-p` `vnc-auth-response` `vnc-auth-verify` `wake-signal` `with-fb-clip` `with-fb-locked` `with-fb-locked-or` `with-own-glyph-cache` `word-name`
+- package `glass` (glass/src/packages.lisp): `*admission-host*` `*admission-port*` `*admission-port-offset*` `*admission-timeout*` `*audio-port-offset*` `*audio-stream-port*` `*audit-retention*` `*box-secret*` `*default-fb-format*` `*desktop-name*` `*dictating*` `*dictation-last*` `*dictation-muted*` `*dictation-tail-seconds*` `*dictation-typed*` `*enrolment-file*` `*enrolment-ttl*` `*enrolments*` `*hearing-gap-seconds*` `*hearing-max-seconds*` `*hearing-models*` `*hearing-prefer-mic*` `*hearing-preroll-seconds*` `*hearing-rate*` `*hearing-threshold*` `*key-injector*` `*last-site-publication*` `*latin1-substitute*` `*legacy-vnc-auth*` `*login-code-file*` `*login-codes*` `*login-ttl*` `*login-url-base*` `*max-cut-text*` `*mic-gap-frames*` `*mic-live-seconds*` `*mic-port-offset*` `*mic-provider*` `*mic-rate*` `*mic-stream-port*` `*mixer-frame-ms*` `*mixer-rate*` `*nostr-allow*` `*nostr-command-max-age*` `*nostr-relays*` `*owner-hooks*` `*owner-timeout*` `*paste-chord*` `*paste-key-delay*` `*paste-max-chars*` `*perf-on*` `*renewal-ttl*` `*seat-key-file*` `*seat-keys*` `*send-lag*` `*send-queue*` `*session-admission-service*` `*session-audio-stream*` `*session-clipboard*` `*session-dictation*` `*session-ears*` `*session-mic*` `*session-mic-stream*` `*session-mixer*` `*session-nostr-bot*` `*session-speaker*` `*site-blossom*` `*site-gateway*` `*site-key-file*` `*site-lookup-relays*` `*site-npub*` `*site-relays*` `*site-title*` `*site-url-file*` `*speech-gain*` `*speech-gap-ms*` `*speech-speed*` `*speech-voice*` `*turn-ice*` `*vnc-password*` `*wordlist*` `+black+` `+blue+` `+green+` `+pixel-colour-space+` `+red+` `+vnc-credential-alphabet+` `+white+` `add-owner-hook` `admission-admit` `admission-allowed-p` `admission-devices` `admission-mint` `admission-ping` `admission-records` `admission-request` `admission-revoke` `admission-serve` `admission-service` `admission-service-p` `admission-service-port` `admission-service-report` `admission-service-running` `admit-peer` `allowed-pubkey-p` `as-mix` `attach-mic` `audio-stream` `audio-stream-mix` `audio-stream-mixer` `audio-stream-p` `audio-stream-port` `audio-stream-report` `audio-stream-running` `audio-tap` `audio-tap-connected` `audio-tap-drops` `audio-tap-frames` `audio-tap-p` `audio-tap-rate` `audio-tap-reconnects` `audio-tap-underruns` `audio-tone` `audit-retained-p` `box-identity-p` `box-npub` `box-pubkey` `call-with-decoder-tables` `choose-speech-voice` `clipboard` `clipboard-clear` `clipboard-disown` `clipboard-listen` `clipboard-normalize-newlines` `clipboard-own` `clipboard-owner` `clipboard-owner-name` `clipboard-p` `clipboard-paste` `clipboard-report` `clipboard-serial` `clipboard-set` `clipboard-stamp` `clipboard-text` `clipboard-unlisten` `code-expiry` `code-live-p` `code-lock` `code-minted` `code-mtime` `code-nonce` `code-recipient` `code-redeemer` `code-settled` `code-source` `code-state` `code-table` `default-font` `describe-enrolment` `describe-enrolments` `describe-login-codes` `describe-revoke` `detach-mic` `device-enrolled-p` `device-enrolment` `dict-ear` `dict-injector` `dict-last` `dict-muted` `dict-name` `dict-on` `dict-typed` `dictating-p` `dictation` `dictation-report` `dictation-text` `ear-listening-to` `ear-mic-stream` `ear-mix` `ear-rec` `ears` `ears-p` `effective-vnc-password` `endpoint-viewers` `enrol-device` `enrolment` `enrolment-cause` `enrolment-count` `enrolment-created` `enrolment-expiry` `enrolment-issued` `enrolment-live-p` `enrolment-nonce` `enrolment-pubkey` `enrolment-seen` `enrolment-since` `enrolment-state` `enrolment-via` `ensure-mic` `fb-blit` `fb-blit-clipped` `fb-blit-scaled` `fb-blit-scaled-region` `fb-blit-yuv` `fb-chroma-height` `fb-chroma-width` `fb-clip` `fb-copy` `fb-damage` `fb-fill` `fb-format` `fb-frame` `fb-frameno` `fb-generation` `fb-get` `fb-height` `fb-hline` `fb-mark-frame` `fb-move-rect` `fb-pixels` `fb-put` `fb-rect` `fb-resize` `fb-take-copy` `fb-take-frame` `fb-text` `fb-touch` `fb-u` `fb-v` `fb-vline` `fb-width` `fb-y` `find-enrolments` `find-login-code` `forget-seat-identity` `framebuffer` `framebuffer-p` `headset` `headset-audio` `headset-audio-port` `headset-dictate` `headset-dictation` `headset-ears` `headset-injector` `headset-listen` `headset-mic` `headset-mic-port` `headset-mix` `headset-mixer` `headset-name` `headset-primary-p` `headset-report` `headset-stop-dictating` `headset-stop-listening` `hearing-clear` `hearing-heard` `hearing-level` `hearing-listen` `hearing-models` `hearing-partial` `hearing-ready-p` `hearing-report` `hearing-text` `hearing-unlisten` `hush` `latin1-bytes` `latin1-string` `list-enrolment-records` `list-enrolments` `list-login-codes` `list-seat-identities` `listening-p` `load-enrolments` `load-font` `load-site-url` `login-code` `login-code-count` `login-code-file` `login-code-store` `login-link-fragment` `login-link-url` `login-token-status` `make-audio-tap` `make-clipboard` `make-ears` `make-framebuffer` `make-headset` `make-mic` `make-mic-sender` `make-mix` `make-mixer` `make-rfb-endpoint` `make-speaker` `make-vnc-credential` `make-wake` `mic` `mic-drops` `mic-feed` `mic-frames` `mic-live-p` `mic-name` `mic-next-frame` `mic-p` `mic-push` `mic-rate` `mic-received` `mic-report` `mic-send` `mic-sender` `mic-sender-connected` `mic-sender-dropped` `mic-sender-offered` `mic-sender-p` `mic-sender-reconnects` `mic-sender-report` `mic-sender-sent` `mic-sender-stop` `mic-source` `mic-stream` `mic-stream-current` `mic-stream-p` `mic-stream-port` `mic-stream-report` `mic-underruns` `mint-login-token` `mix` `mix-bus` `mix-hears-p` `mix-level` `mix-mute` `mix-name` `mix-p` `mix-report` `mix-seq` `mix-sinks` `mix-source-gain` `mix-unmute` `mixer` `mixer-add-file` `mixer-add-source` `mixer-capacity` `mixer-default` `mixer-default-mix` `mixer-find-source` `mixer-frame-samples` `mixer-late` `mixer-level` `mixer-mixes` `mixer-p` `mixer-play` `mixer-rate` `mixer-remove-source` `mixer-report` `mixer-running` `mixer-seq` `mixer-sinks` `mixer-source` `mixer-source-p` `mixer-sources` `mixer-start` `mixer-stop` `mixer-subscribe` `mixer-tick` `mixer-unsubscribe` `normalize-pubkey` `nostr-bot` `nostr-bot-answered` `nostr-bot-denied` `nostr-bot-ignored` `nostr-bot-npub` `nostr-bot-p` `nostr-bot-pubkey` `nostr-bot-received` `nostr-bot-report` `nostr-bot-run` `nostr-bot-service` `nostr-bot-stopped-p` `nostr-command-reply` `nostr-owner-service` `note-site-publication` `parse-nostr-command` `paste-keysyms` `paste-text` `paste-text-as-keys` `perf-record-composite` `perf-record-send` `perf-report` `perf-reset` `publish-site` `publish-site-file` `read-client-cut-text` `read-file-octets` `record-mint` `redeem-nonce` `refresh-nostr-allow` `remove-mix` `remove-owner-hook` `revoke-enrolments` `rgb` `run-owner-hooks` `save-enrolments` `save-site-url` `seat-admission-port` `seat-audio-port` `seat-identity` `seat-identity-for` `seat-identity-known` `seat-identity-name` `seat-identity-npub` `seat-identity-pubkey` `seat-identity-secret` `seat-mic-port` `send-cut-text` `send-login-link` `serve` `serve-endpoints` `serve-multi` `serve-one` `serve-single` `session-clipboard` `session-mic` `session-mixer` `session-speaker` `set-login-url-base` `sink` `sink-drops` `sink-frames` `sink-gain` `sink-mix` `sink-mixer` `sink-next-frame` `sink-p` `sink-rate` `sink-source` `sink-underruns` `sink-unsubscribe` `site-identity-p` `site-link-path` `site-npub` `site-publication` `site-publication-at` `site-publication-hash` `site-publication-npub` `site-publication-path` `site-publication-problems` `site-publication-report` `site-publication-url` `site-publication-version` `site-report` `site-secret` `speak` `speaker` `speaker-p` `speaking-p` `speech-options` `speech-report` `speech-voice` `speech-voices` `src-audience` `src-frames` `src-gain` `src-id` `src-level` `src-name` `start-admission-service` `start-audio-stream` `start-dictation` `start-listening` `start-mic-stream` `start-nostr-bot` `start-session-audio` `start-session-mic` `start-session-nostr` `stop-admission-service` `stop-audio-stream` `stop-dictation` `stop-headset` `stop-listening` `stop-mic-stream` `stop-nostr-bot` `stop-speaker` `stream-mic` `sync-enrolments` `tap-next-frame` `tap-report` `tap-source` `tap-stop` `text-width` `unix-now` `verify-login-token` `vnc-auth-available-p` `vnc-auth-response` `vnc-auth-verify` `wake-signal` `with-fb-clip` `with-fb-locked` `with-fb-locked-or` `with-own-glyph-cache` `word-name`
 - package `glass-repl` (glass/src/packages.lisp): `*listener*` `evaluate-text` `form-complete-p` `listener-interrupt` `listener-turn` `make-listener` `repl-app` `run-listener` `stop-listener`
 - package `glass-remote-webrtc` (glass/src/remote-webrtc.lisp): `*remote-apps*` `remote-app` `remote-app-connect` `remote-app-remote` `remote-app-state` `remote-app-status`
 - package `glass-client` (glass/src/rfb-client.lisp): `*input-queue-limit*` `*pass-copyrect*` `*reconnect-delay*` `*reconnect-max-delay*` `*rfb-client-name*` `*update-hook*` `connect-remote` `remote` `remote-connected-p` `remote-connector` `remote-fb` `remote-height` `remote-host` `remote-key` `remote-last-error` `remote-name` `remote-on-resize` `remote-p` `remote-password` `remote-pointer` `remote-port` `remote-report` `remote-set-desktop-size` `remote-state` `remote-stats` `remote-stop` `remote-take-copy` `remote-take-dirty` `remote-width`
